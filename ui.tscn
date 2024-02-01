@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7oa578s0ao17"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_1yi7s"]
+[ext_resource type="Script" path="res://togglebutton.gd" id="1_ipuia"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1yi7s")
+
+[node name="ToggleButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 71.0
+offset_right = 606.0
+offset_bottom = 168.0
+toggle_mode = true
+text = "receiving"
+script = ExtResource("1_ipuia")
+on_text = "pitching"
+off_text = "receiving"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(800, 500)
+visible = true
+ok_button_text = "Select"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json")
+
+[node name="SendButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 103.0
+offset_right = 229.0
+offset_bottom = 214.0
+text = "send"
+
+[node name="IP" type="Label" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 250.0
+offset_right = 1137.0
+offset_bottom = 290.0
+
+[node name="status" type="Label" parent="."]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 415.0
+offset_right = 128.0
+offset_bottom = 438.0
+text = "offline"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 546.0
+offset_right = 572.0
+offset_bottom = 628.0
+
+[node name="popup" type="Button" parent="."]
+layout_mode = 0
+offset_left = 866.0
+offset_top = 11.0
+offset_right = 924.0
+offset_bottom = 42.0
+text = "popup"
+
+[connection signal="toggled" from="ToggleButton" to="." method="_on_toggle_button_toggled"]
+[connection signal="file_selected" from="FileDialog" to="." method="on_file_selected"]
+[connection signal="pressed" from="SendButton" to="." method="_on_send_button_pressed"]
+[connection signal="pressed" from="popup" to="." method="_on_popup_pressed"]
