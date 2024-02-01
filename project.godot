@@ -14,3 +14,7 @@ config/name="Stream Tool Hack"
 run/main_scene="res://ui.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
